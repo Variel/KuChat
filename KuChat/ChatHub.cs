@@ -17,9 +17,13 @@ namespace KuChat
             var connection = await db.Connections.FindAsync(Context.ConnectionId);
             var account = connection.Account;
             var channel = await db.Channels.FindAsync(channelId);
-            var channelConnections = channel.Accounts.SelectMany(a => a.Connections).Select(c => c.Id).ToList();
 
-            Clients.Clients(channelConnections).newMessage(channelId, account.ToTransfer(), message);
+            if (account.Channels.Contains(channel))
+            {
+                var channelConnections = channel.Accounts.SelectMany(a => a.Connections).Select(c => c.Id).ToList();
+
+                Clients.Clients(channelConnections).newMessage(channelId, account.ToTransfer(), message);
+            }
         }
 
         public override async Task OnConnected()

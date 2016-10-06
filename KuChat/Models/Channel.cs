@@ -10,6 +10,7 @@ namespace KuChat.Models
     {
         public Guid Id { get; set; } = new Guid();
         public string Name { get; set; }
+        public string Description { get; set; }
 
         [DateTimeKind(DateTimeKind.Utc)]
         public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
