@@ -17,5 +17,7 @@ namespace KuChat.Models
 
         [InverseProperty(nameof(Account.Channels))]
         public virtual ICollection<Account> Accounts { get; set; } = new HashSet<Account>();
+
+        public virtual ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }
 }

@@ -23,6 +23,12 @@ namespace KuChat
                 var channelConnections = channel.Accounts.SelectMany(a => a.Connections).Select(c => c.Id).ToList();
 
                 Clients.Clients(channelConnections).newMessage(channelId, account.ToTransfer(), message);
+
+                var content = new TextContent(message);
+                var msg = new Message(content);
+
+                channel.Messages.Add(msg);
+                await db.SaveChangesAsync();
             }
         }
 

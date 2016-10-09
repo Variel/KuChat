@@ -13,6 +13,8 @@ namespace KuChat.Models
         public DbSet<Connection> Connections { get; set; }
         public DbSet<Channel> Channels { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Content> Contents { get; set; }
 
         public DatabaseContext()
         {
